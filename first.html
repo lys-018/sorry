@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Sorry Letter</title>
+
+<style>
+body{
+    margin:0;
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:#ffe6eb;
+    font-family:Arial, sans-serif;
+}
+
+.box{
+    background:white;
+    padding:20px;
+    border-radius:12px;
+    text-align:center;
+    width:90%;
+    max-width:350px;
+    box-shadow:0 5px 15px rgba(0,0,0,0.2);
+}
+
+h2{ color:#ff4d6d; }
+
+.buttons{
+    margin-top:20px;
+    position:relative;
+    height:150px;
+}
+
+button{
+    padding:12px 22px;
+    font-size:16px;
+    border:none;
+    border-radius:8px;
+}
+
+#yes{
+    background:#ff4d6d;
+    color:white;
+}
+
+#no{
+    background:#ccc;
+    position:absolute;
+    left:50%;
+    top:50%;
+    transform:translate(-50%,-50%);
+}
+</style>
+</head>
+
+<body>
+
+<div class="box">
+    <h2>Sorry ❤️</h2>
+    <p>Please forgive me…</p>
+
+    <div class="buttons">
+        <button id="yes">Yes</button>
+        <button id="no">No</button>
+    </div>
+</div>
+
+<script>
+const noBtn = document.getElementById("no");
+const yesBtn = document.getElementById("yes");
+const box = document.querySelector(".buttons");
+
+function moveNo(){
+    const maxX = box.clientWidth - noBtn.offsetWidth;
+    const maxY = box.clientHeight - noBtn.offsetHeight;
+
+    const x = Math.random() * maxX;
+    const y = Math.random() * maxY;
+
+    noBtn.style.left = x + "px";
+    noBtn.style.top = y + "px";
+}
+
+/* PC hover */
+noBtn.addEventListener("mouseenter", moveNo);
+
+/* Mobile touch */
+noBtn.addEventListener("touchstart", function(e){
+    e.preventDefault();
+    moveNo();
+});
+
+yesBtn.onclick = function(){
+    document.body.innerHTML = `
+        <div style="
+            height:100vh;
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            background:#ffe6eb;
+            font-family:Arial;
+            text-align:center;
+        ">
+            <h1 style="color:#ff4d6d;">
+                I know you love me ❤️😊
+            </h1>
+        </div>
+    `;
+};
+</script>
+
+</body>
+</html>
